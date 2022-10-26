@@ -16,6 +16,18 @@ declare module 'egg' {
     testType?: TEST_TYPES
   }
 
+  interface IQueryData {
+    id: string;
+    question: string;
+    answer: string;
+    item1: string;
+    item2: string;
+    item3: string;
+    item4: string;
+    explains: string;
+    url: string;
+  }  
+
   const enum SUBJECTS {
     s1 = 1, 
     s4 = 4

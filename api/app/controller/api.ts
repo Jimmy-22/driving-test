@@ -1,6 +1,4 @@
-import { Controller } from 'egg';
-import { IHttpPostData } from 'egg';
-
+import { Controller, IHttpPostData } from 'egg';
 export default class ApiController extends Controller {
   public async getQueries() {
     const { ctx } = this;

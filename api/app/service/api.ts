@@ -1,9 +1,17 @@
-import { Service, IHttpGetParams, IHttpPostData, MODELS, SUBJECTS, TEST_TYPES } from 'egg';
+import { 
+  Service, 
+  IHttpGetParams, 
+  IHttpPostData, 
+  MODELS, 
+  SUBJECTS, 
+  TEST_TYPES, 
+  IQueryData 
+} from 'egg';
 /**
  * Test Service
  */
 export default class Api extends Service {
-  public async getQueries({ subject, model }: IHttpPostData): Promise<void> {
+  public async getQueries({ subject, model }: IHttpPostData): Promise<IQueryData[]> {
     const { ctx } = this
     // 对参数进行有效判断
     const _subject: SUBJECTS = subject || SUBJECTS.s1
