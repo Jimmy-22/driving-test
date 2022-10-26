@@ -3,5 +3,6 @@ import { Application } from 'egg';
 export default (app: Application) => {
   const { controller, router } = app;
 
-  router.get('/', controller.home.index);
+  // 请求驾照考题API对应的路由
+  router.post('/api/query', controller.api.getQueries);
 };

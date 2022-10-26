@@ -4,8 +4,10 @@
 import 'egg';
 import { EggAppConfig } from 'egg';
 import ExportConfigDefault from '../../config/config.default';
+import ExportConfig from '../../config/config';
 type ConfigDefault = ReturnType<typeof ExportConfigDefault>;
-type NewEggAppConfig = ConfigDefault;
+type Config = typeof ExportConfig;
+type NewEggAppConfig = ConfigDefault & Config;
 declare module 'egg' {
   interface EggAppConfig extends NewEggAppConfig { }
 }

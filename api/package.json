@@ -22,9 +22,10 @@
     "clean": "ets clean"
   },
   "dependencies": {
-    "egg": "^2.6.1",
+    "egg": "^3.3.3",
     "egg-cors": "^2.2.3",
-    "egg-scripts": "^2.6.0"
+    "egg-scripts": "^2.6.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "@eggjs/tsconfig": "^1.0.0",
