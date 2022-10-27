@@ -1,6 +1,7 @@
+import { IState } from '../typings'
 import initialState from './state'
 
-function reducer () {
+function reducer (state: IState = initialState, action: any) {
 
 }
 
