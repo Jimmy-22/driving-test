@@ -1,7 +1,11 @@
-export {
+const SET_STATE_DEAFAULT: string = 'SET_STATE_DEAFAULT'
 
+type SET_STATE_DEAFAULT_TYPE = typeof SET_STATE_DEAFAULT
+
+export {
+  SET_STATE_DEAFAULT
 }
 
 export type {
-
+  SET_STATE_DEAFAULT_TYPE
 }

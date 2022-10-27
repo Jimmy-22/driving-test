@@ -1,8 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
+import Header from "../components/Header";
 
 const Result: FC = () => {
   return (
-    <div className="wrapper">Result</div>
+    <div className="wrapper">
+      <Header 
+        headerTitle="考试结果" 
+        iconShow={ true } 
+      />
+    </div>
   )
 }
 
