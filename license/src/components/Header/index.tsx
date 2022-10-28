@@ -1,9 +1,10 @@
 import React, { FC } from "react"
-import { Link } from 'react-router-dom'
 import './index.scss'
 import { useDispatch } from 'react-redux'
 import * as types from '../../store/actionTypes'
 import { Dispatch } from 'redux'
+import IconComponent from '../Icon'
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   headerTitle: string
@@ -16,24 +17,21 @@ const Header: FC<IProps> = ({
 }) => {
 
   const dispatch: Dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const setStateDefault = () => {
     dispatch({ type: types.SET_STATE_DEAFAULT  })
+    navigate('/')
   }
 
   return (
     <header className="header">
-      <div className="back-icon">
-        {
-          iconShow &&
-          <Link
-            to='/'
-            className='iconfont icon-arrow-right'
-            onClick={ setStateDefault }
-          > 
-          </Link>
-        }
-      </div>
+      {
+        iconShow && 
+        <div onClick={ setStateDefault } className="back-icon">
+          <IconComponent icon='#icon-back1'/> 
+        </div>
+      }
       <span>{ headerTitle }</span>
     </header>
   )
