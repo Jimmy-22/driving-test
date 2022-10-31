@@ -1,7 +1,7 @@
 // 科目类型
 enum SUBJECTS {
-  s1 = 1, 
-  s4 = 4
+  s1 = 1,
+  s4 = 4,
 }
 
 // 驾照类型
@@ -11,12 +11,12 @@ enum MODELS {
   a1 = 'a1',
   a2 = 'a2',
   b1 = 'b1',
-  b2 = 'b2'
+  b2 = 'b2',
 }
 
 // 请求参数
 interface IHttpPostData {
-  subject: SUBJECTS,
+  subject: SUBJECTS
   model?: MODELS
 }
 
@@ -50,16 +50,18 @@ interface IQueryData {
   item4: string
   explains: string
   url: string
-}  
-
-export {
-  SUBJECTS,
-  MODELS
 }
 
-export type {
-  IQueryData,
-  IUserAnswers,
-  IHttpPostData,
-  IState
+interface ISubjectData {
+  id: SUBJECTS
+  title: string
 }
+
+interface IModelData {
+  id: MODELS
+  title: string
+}
+
+export { SUBJECTS, MODELS }
+
+export type { IQueryData, IUserAnswers, IHttpPostData, IState, ISubjectData, IModelData }
