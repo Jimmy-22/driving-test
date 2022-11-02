@@ -18,6 +18,7 @@ function reducer(state: IState = initialState, action: TAction): IState {
     case types.SET_CURRENT_SUBJECT:
       return {
         ...state,
+        modelShow: action.payload === SUBJECTS.s4 ? false : true,
         currentSubject: action.payload as SUBJECTS,
       }
     case types.SET_CURRENT_MODEL:
