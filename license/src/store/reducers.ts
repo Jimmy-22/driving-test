@@ -20,6 +20,11 @@ function reducer(state: IState = initialState, action: TAction): IState {
         ...state,
         currentSubject: action.payload as SUBJECTS,
       }
+    case types.SET_CURRENT_MODEL:
+      return {
+        ...state,
+        currentModel: action.payload as MODELS,
+      }
     default:
       return state
   }

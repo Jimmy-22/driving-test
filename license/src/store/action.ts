@@ -1,4 +1,4 @@
-import { SUBJECTS } from '../typings'
+import { MODELS, SUBJECTS } from '../typings'
 import * as types from './actionTypes'
 
 interface ISetStateDefault {
@@ -11,7 +11,12 @@ interface ISetCurrentSubject {
   payload: SUBJECTS
 }
 
-export type TAction = ISetStateDefault | ISetCurrentSubject
+interface ISetCurrentModel {
+  type: types.SET_CURRENT_MODEL_TYPE
+  payload: MODELS
+}
+
+export type TAction = ISetStateDefault | ISetCurrentSubject | ISetCurrentModel
 
 function setStateDefault(): ISetStateDefault {
   return {
@@ -27,4 +32,11 @@ function setCurrentSubject(subject: SUBJECTS): ISetCurrentSubject {
   }
 }
 
-export { setStateDefault, setCurrentSubject }
+function setCurrentModel(model: MODELS): ISetCurrentModel {
+  return {
+    type: types.SET_CURRENT_MODEL,
+    payload: model,
+  }
+}
+
+export { setStateDefault, setCurrentSubject, setCurrentModel }

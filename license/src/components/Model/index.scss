@@ -1,0 +1,26 @@
+.model-panel {
+  display: flex;
+  padding: 15px 0;
+  flex-wrap: wrap;
+
+  .item {
+    width: 50%;
+    padding: 15px;
+
+    .item-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      border: 1px solid #1773cc;
+      color: #1773cc;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    & .active {
+      background-color: #1773cc;
+      color: #fff;
+    }
+  }
+}

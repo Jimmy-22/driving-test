@@ -7,7 +7,7 @@ export const subjects: ISubjectData[] = [
 
 export const models: IModelData[] = [
   { id: MODELS.c1, title: 'C1' },
-  { id: MODELS.c2, title: 'C1' },
+  { id: MODELS.c2, title: 'C2' },
   { id: MODELS.a1, title: 'A1' },
   { id: MODELS.a2, title: 'A2' },
   { id: MODELS.b1, title: 'B1' },
