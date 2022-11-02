@@ -5,6 +5,7 @@ import * as types from './actionTypes'
 
 function reducer(state: IState = initialState, action: TAction): IState {
   switch (action.type) {
+    // reducer 最终是要返回一个state, 如果要改变state中的某个属性，先把state拓展到一个新的对象中，再修改属性
     case types.SET_STATE_DEAFAULT:
       return {
         ...state,
@@ -20,12 +21,12 @@ function reducer(state: IState = initialState, action: TAction): IState {
         ...state,
         modelShow: action.payload === SUBJECTS.s4 ? false : true,
         currentSubject: action.payload as SUBJECTS,
-      }
+      } as IState
     case types.SET_CURRENT_MODEL:
       return {
         ...state,
         currentModel: action.payload as MODELS,
-      }
+      } as IState
     default:
       return state
   }

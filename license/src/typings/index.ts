@@ -30,6 +30,7 @@ interface IState {
   total: number
 }
 
+// 用户作答项信息
 interface IUserAnswers {
   qid: string
   question: string
@@ -40,6 +41,7 @@ interface IUserAnswers {
   isRight: boolean
 }
 
+// 题目信息
 interface IQueryData {
   id: string
   question: string
@@ -52,11 +54,13 @@ interface IQueryData {
   url: string
 }
 
+// 科目数据类型定义
 interface ISubjectData {
   id: SUBJECTS
   title: string
 }
 
+// 驾照数据类型定义
 interface IModelData {
   id: MODELS
   title: string

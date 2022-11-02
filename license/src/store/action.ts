@@ -1,6 +1,7 @@
 import { MODELS, SUBJECTS } from '../typings'
 import * as types from './actionTypes'
 
+// 定义action函数返回值的类型
 interface ISetStateDefault {
   type: types.SET_STATE_DEAFAULT_TYPE
   payload: null
@@ -16,6 +17,7 @@ interface ISetCurrentModel {
   payload: MODELS
 }
 
+// 定义reducer action参数的类型；由于类型是多个，用 | 联合类型，可使用时候再断言
 export type TAction = ISetStateDefault | ISetCurrentSubject | ISetCurrentModel
 
 function setStateDefault(): ISetStateDefault {
