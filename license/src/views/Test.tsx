@@ -1,7 +1,9 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Header from '../components/Header'
+import { useCurrentQuestion } from '../hooks'
 import { IQueryData, IState } from '../typings'
+import TestPanel from '../components/TestPanel'
 
 enum HEADER_TITLE {
   loading = '试题加载中...',
@@ -14,10 +16,21 @@ const Test: FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const total: number = useSelector((state: IState) => state.total)
   const queryList: IQueryData[] = useSelector((state: IState) => state.queryList)
+  const [currentQuestion, setCurrentQuestion] = useCurrentQuestion()
+
+  useEffect(() => {
+    currentQuestion && setHeaderTitle(HEADER_TITLE.testing)
+  }, [currentQuestion])
+
+  useEffect(() => {
+    setHeaderTitle(HEADER_TITLE.loading)
+    setCurrentQuestion(queryList[currentIndex])
+  }, [queryList, currentIndex, setCurrentQuestion])
 
   return (
     <div className="wrapper">
       <Header headerTitle={headerTitle} iconShow={true} />
+      <TestPanel {...currentQuestion!} />
     </div>
   )
 }
