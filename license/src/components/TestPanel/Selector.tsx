@@ -1,6 +1,9 @@
 import React, { FC, useCallback, useState } from 'react'
 import MyButton from '../MyButton'
 import './styles/selector.scss'
+import { formatUserAnswer } from '../../lib/utils'
+import { IState, IUserAnswer } from '../../typings'
+import { useSelector } from 'react-redux'
 
 interface IProps {
   id: string
@@ -19,8 +22,19 @@ enum SELECTEORS {
 
 const Selector: FC<IProps> = ({ id, item1, item2, item3, item4 }) => {
   const [currentAnswer, setCurrentAnswer] = useState<SELECTEORS>(SELECTEORS.item1)
+  const [userAnswer, setUserAnswer] = useState<IUserAnswer | null>(null)
+  const queryList = useSelector((state: IState) => state.queryList)
 
-  const handleSelectorClick = (e: React.MouseEvent): void => {}
+  const handleSelectorClick = (e: React.MouseEvent): void => {
+    const target: HTMLElement = e.target as HTMLElement
+    const className = target.className
+
+    if (className === 'item-btn') {
+      const answer: SELECTEORS = target.dataset.answer as SELECTEORS
+      setCurrentAnswer(answer)
+      setUserAnswer(formatUserAnswer(queryList, id, currentAnswer))
+    }
+  }
 
   const goNext: () => void = useCallback(() => {}, [])
 

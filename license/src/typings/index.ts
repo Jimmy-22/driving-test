@@ -23,7 +23,7 @@ interface IHttpPostData {
 // store state
 interface IState {
   queryList: IQueryData[]
-  userAnswers: IUserAnswers[]
+  userAnswers: IUserAnswer[]
   currentSubject: SUBJECTS
   currentModel: MODELS
   modelShow: boolean
@@ -31,11 +31,11 @@ interface IState {
 }
 
 // 用户作答项信息
-interface IUserAnswers {
+interface IUserAnswer {
   qid: string
   question: string
   url: string
-  explain: string
+  explains: string
   userAnswer: string
   rightAnswer: string
   isRight: boolean
@@ -68,4 +68,4 @@ interface IModelData {
 
 export { SUBJECTS, MODELS }
 
-export type { IQueryData, IUserAnswers, IHttpPostData, IState, ISubjectData, IModelData }
+export type { IQueryData, IUserAnswer, IHttpPostData, IState, ISubjectData, IModelData }

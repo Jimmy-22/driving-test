@@ -1,4 +1,4 @@
-import { IQueryData, MODELS, SUBJECTS } from '../typings'
+import { IQueryData, IUserAnswer, MODELS, SUBJECTS } from '../typings'
 import * as types from './actionTypes'
 
 // 定义action函数返回值的类型
@@ -22,8 +22,13 @@ interface ISetQueryList {
   payload: IQueryData[]
 }
 
+interface ISetUserAnswer {
+  type: types.SET_USER_ANSWER_TYPE
+  payload: IUserAnswer
+}
+
 // 定义reducer action参数的类型；由于类型是多个，用 | 联合类型，可使用时候再断言
-export type TAction = ISetStateDefault | ISetCurrentSubject | ISetCurrentModel | ISetQueryList
+export type TAction = ISetStateDefault | ISetCurrentSubject | ISetCurrentModel | ISetQueryList | ISetUserAnswer
 
 function setStateDefault(): ISetStateDefault {
   return {
@@ -53,4 +58,11 @@ function setQueryList(queryList: IQueryData[]): ISetQueryList {
   }
 }
 
-export { setStateDefault, setCurrentSubject, setCurrentModel, setQueryList }
+function setUserAnswer(userAnswer: IUserAnswer): ISetUserAnswer {
+  return {
+    type: types.SET_USER_ANSWER,
+    payload: userAnswer,
+  }
+}
+
+export { setStateDefault, setCurrentSubject, setCurrentModel, setQueryList, setUserAnswer }
