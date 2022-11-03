@@ -1,0 +1,25 @@
+.selector-panel {
+  margin-top: 10px;
+  .item {
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+  .item-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 38px;
+    border: 1px solid #1773cc;
+    border-radius: 5px;
+    color: #1773cc;
+    font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 20px;
+  }
+  & .active {
+    background-color: #1773cc;
+    color: #fff;
+  }
+}
