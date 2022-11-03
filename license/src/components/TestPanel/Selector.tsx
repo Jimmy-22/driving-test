@@ -1,9 +1,12 @@
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import MyButton from '../MyButton'
 import './styles/selector.scss'
 import { formatUserAnswer } from '../../lib/utils'
 import { IState, IUserAnswer } from '../../typings'
 import { useSelector } from 'react-redux'
+import * as types from '../../store/actionTypes'
+import { useDispatch } from 'react-redux'
+import { Dispatch } from 'redux'
 
 interface IProps {
   id: string
@@ -11,6 +14,7 @@ interface IProps {
   item2: string
   item3: string
   item4: string
+  onNextQuestion: () => void
 }
 
 enum SELECTEORS {
@@ -20,10 +24,11 @@ enum SELECTEORS {
   item4 = '4',
 }
 
-const Selector: FC<IProps> = ({ id, item1, item2, item3, item4 }) => {
+const Selector: FC<IProps> = ({ id, item1, item2, item3, item4, onNextQuestion }) => {
   const [currentAnswer, setCurrentAnswer] = useState<SELECTEORS>(SELECTEORS.item1)
   const [userAnswer, setUserAnswer] = useState<IUserAnswer | null>(null)
   const queryList = useSelector((state: IState) => state.queryList)
+  const dispatch: Dispatch = useDispatch()
 
   const handleSelectorClick = (e: React.MouseEvent): void => {
     const target: HTMLElement = e.target as HTMLElement
@@ -36,7 +41,17 @@ const Selector: FC<IProps> = ({ id, item1, item2, item3, item4 }) => {
     }
   }
 
-  const goNext: () => void = useCallback(() => {}, [])
+  useEffect(() => {
+    if (queryList && id && currentAnswer) {
+      setUserAnswer(formatUserAnswer(queryList, id, currentAnswer))
+    }
+  }, [queryList, id, currentAnswer])
+
+  const goNext: () => void = useCallback(() => {
+    dispatch({ type: types.SET_USER_ANSWER, payload: userAnswer })
+    setCurrentAnswer(SELECTEORS.item1)
+    onNextQuestion()
+  }, [dispatch, onNextQuestion, userAnswer])
 
   return (
     <div className="selector-panel" onClick={handleSelectorClick}>
