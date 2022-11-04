@@ -30,25 +30,33 @@ const Selector: FC<IProps> = ({ id, item1, item2, item3, item4, onNextQuestion }
   const queryList = useSelector((state: IState) => state.queryList)
   const dispatch: Dispatch = useDispatch()
 
+  // 使用事件代理的方式点击选项
   const handleSelectorClick = (e: React.MouseEvent): void => {
+    // target 在react中有独立的target类型
     const target: HTMLElement = e.target as HTMLElement
     const className = target.className
 
     if (className === 'item-btn') {
       const answer: SELECTEORS = target.dataset.answer as SELECTEORS
+      // 设置当前答案 1234
       setCurrentAnswer(answer)
+      // 设置用户当前问题的答案
       setUserAnswer(formatUserAnswer(queryList, id, currentAnswer))
     }
   }
 
+  // 当页面绘制完毕之后，先执行设置用户当前问题的答案，每一道题默认选项是1
   useEffect(() => {
     if (queryList && id && currentAnswer) {
       setUserAnswer(formatUserAnswer(queryList, id, currentAnswer))
     }
   }, [queryList, id, currentAnswer])
 
+  // 下一题按钮
   const goNext: () => void = useCallback(() => {
+    // 派发action， 忘userAnswer内部放入当前用户答案
     dispatch({ type: types.SET_USER_ANSWER, payload: userAnswer })
+    // 已经要走下一题了，把默认选项设置成第一个
     setCurrentAnswer(SELECTEORS.item1)
     onNextQuestion()
   }, [dispatch, onNextQuestion, userAnswer])
