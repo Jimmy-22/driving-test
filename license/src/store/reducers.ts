@@ -37,7 +37,7 @@ function reducer(state: IState = initialState, action: TAction): IState {
       return {
         ...state,
         userAnswers,
-      }
+      } as IState
     default:
       return state
   }

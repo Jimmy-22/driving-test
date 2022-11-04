@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
 import Header from '../components/Header'
 import { IState, IUserAnswer } from '../typings'

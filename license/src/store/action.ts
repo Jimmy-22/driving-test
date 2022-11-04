@@ -8,7 +8,7 @@ interface ISetStateDefault {
 }
 
 interface ISetCurrentSubject {
-  type: types.SET_STATE_DEAFAULT_TYPE
+  type: types.SET_CURRENT_SUBJECT_TYPE
   payload: SUBJECTS
 }
 

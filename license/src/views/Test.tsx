@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Header from '../components/Header'
 import { useCurrentQuestion } from '../hooks'
-import { IQueryData, IState, IUserAnswer } from '../typings'
+import { IQueryData, IState } from '../typings'
 import TestPanel from '../components/TestPanel'
 import { useNavigate } from 'react-router-dom'
 

@@ -27,4 +27,4 @@ const ResultPanel: FC<IProps> = ({ userAnswerItem }) => {
 
 export default ResultPanel
 
-// dangerouslySetInnerHTML属性的参数是__html：富文本html
+// dangerouslySetInnerHTML属性的参数是__html：富文本
