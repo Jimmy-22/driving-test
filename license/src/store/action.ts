@@ -30,6 +30,7 @@ interface ISetUserAnswer {
 // 定义reducer action参数的类型；由于类型是多个，用 | 联合类型，可使用时候再断言
 export type TAction = ISetStateDefault | ISetCurrentSubject | ISetCurrentModel | ISetQueryList | ISetUserAnswer
 
+// 在Redux中，Action是一个包含type字段的对象，用来描述发生了什么事情
 function setStateDefault(): ISetStateDefault {
   return {
     type: types.SET_STATE_DEAFAULT,
